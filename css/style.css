@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+}
+
+h4,
+p {
+    margin-bottom: .5rem;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vw;
+    transform-origin: top left;
+    transform: rotate(-90deg) translateX(-100vh);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+    transform-origin: top left;
+    transform: rotate(90deg) translateY(-100vh);
+}
+
+.certificates {
+    height: 100vh;
+    padding: 0 2.5rem;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: relative;
+}
+
+.certificates:after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: lightgray;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.thumbnail {
+    width: 150px;
+    height: 100px;
+    border: 3px solid lightgray;
+    background: #fff;
+    padding: .2rem;
+    box-shadow: 0 3px 15px -5px gray;
+    position: relative;
+    animation: .3s zoom-in forwards;
+    z-index: 10;
+}
+
+.description {
+    position: relative;
+    margin-left: 1rem;
+    animation: .3s fade-in-right forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    transform: translatex(-100%);
+    z-index: 9;
+    transition: 0.3s all ease-in-out;
+}
+
+.thumbnail:hover~.description {
+    opacity: 1;
+    transform: translatex(0);
+}
+
+.certificates:nth-child(odd) .thumbnail {
+    bottom: -85px;
+}
+
+.certificates:nth-child(odd) .description {
+    bottom: -85px;
+}
+
+.certificates:nth-child(even) .thumbnail {
+    top: -85px;
+}
+
+.certificates:nth-child(even) .description {
+    top: -85px;
+}
+
+.certificates:nth-child(odd) .thumbnail:after {
+    content: '';
+    position: absolute;
+    top: -33px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 3px;
+    height: 2rem;
+    background: lightgray
+}
+
+.certificates:nth-child(even) .thumbnail:after {
+    content: '';
+    position: absolute;
+    bottom: -33px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 3px;
+    height: 2rem;
+    background: lightgray
+}
+
+@keyframes zoom-in {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
